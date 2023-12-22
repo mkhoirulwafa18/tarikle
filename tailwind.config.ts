@@ -144,5 +144,6 @@ module.exports = {
     require("tailwindcss-animate"),
     require("@tailwindcss/typography"),
     require("tailwindcss-debug-screens"),
+    require('@tailwindcss/aspect-ratio'),
   ],
 }
