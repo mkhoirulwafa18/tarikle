@@ -31,3 +31,17 @@ export function useMousePosition(): MousePosition {
 
   return mousePosition;
 }
+
+export function getMaxSlider(): number {
+  const now = new Date
+  const tarikFirstYtDate = new Date(2014, 9)
+  return (now.getFullYear() - tarikFirstYtDate.getFullYear()) * 12 + now.getMonth() - tarikFirstYtDate.getMonth();
+}
+
+export function getGuessedDate(val: number) {
+  const tarikFirstYtDate = new Date(2014, 9)
+  return new Date(tarikFirstYtDate.getFullYear() + Math.floor(val / 12), tarikFirstYtDate.getMonth() + val % 12).toLocaleDateString("default", {
+    month: "long",
+    year: "numeric"
+  })
+}
