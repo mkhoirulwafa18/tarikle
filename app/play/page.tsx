@@ -1,14 +1,14 @@
 "use client";
 
 import { DateSlider } from "@/components/date-slider";
-import { InstructionCard } from "@/components/instruction-card";
 import { Button } from "@/components/ui/button";
 import Particles from "@/components/ui/particles";
-import { getGuessedDate, getMaxSlider } from "@/lib/utils";
+import { getPlay, getGuessedDate } from "@/lib/utils";
 import React from "react";
 
 export default function Play() {
     const [sliderVal, setSliderVal] = React.useState(0)
+
     return (
         <div className="flex flex-col items-center justify-center w-screen h-screen overflow-hidden bg-gradient-to-tl from-black via-zinc-600/20 to-black">
             <div className="hidden w-screen h-px animate-glow md:block animate-fade-left bg-gradient-to-r from-zinc-300/0 via-zinc-300/50 to-zinc-300/0" />
@@ -33,6 +33,7 @@ export default function Play() {
                     variant="secondary"
                     onClick={() => {
                         // router.push('/play')
+                        getPlay();
                     }}
                 >
                     GUESS

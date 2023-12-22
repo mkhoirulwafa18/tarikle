@@ -45,3 +45,9 @@ export function getGuessedDate(val: number) {
     year: "numeric"
   })
 }
+
+export const getPlay = async () => {
+  const res = await fetch('/api/play');
+
+  return res.json();
+}

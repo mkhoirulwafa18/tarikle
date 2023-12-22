@@ -10,7 +10,7 @@ export async function GET(
         //     }
         // });
 
-        return NextResponse.json({ "success": "true", "wafa": "mantep bang" });
+        return NextResponse.json({ "success": "true", "wafa": "mantep" });
     } catch (error) {
         console.log('[COLORS_GET]', error)
         return new NextResponse("Internal error", { status: 500 });
