@@ -1,14 +1,8 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { InstructionCard } from "@/components/instruction-card";
 import Particles from "@/components/ui/particles";
-import Link from "next/link";
 import React from "react";
-
-const actionButtons = [
-  { name: "Instruction", href: "/projects", variant: "secondary" },
-  { name: "Play", href: "/contact", variant: "default" },
-];
 
 export default function Home() {
   return (
@@ -23,21 +17,8 @@ export default function Home() {
       </h1>
 
       <div className="hidden w-screen h-px animate-glow md:block animate-fade-right bg-gradient-to-r from-zinc-300/0 via-zinc-300/50 to-zinc-300/0" />
-      <div className="my-16 text-center animate-fade-in">
-        <nav className="my-16 animate-fade-in">
-          <ul className="flex items-center justify-center gap-16">
-            {actionButtons.map((item) => (
-              <Button
-                key={item.href}
-                variant={item.variant == "secondary" ? "secondary" : "destructive"}
-                className="text-sm duration-500 text-black-500 hover:text-black-300"
-                onClick={() => { console.log('clickedddd') }}
-              >
-                {item.name}
-              </Button>
-            ))}
-          </ul>
-        </nav>
+      <div className="animate-fade-in">
+        <InstructionCard />
       </div>
     </div>
   );
