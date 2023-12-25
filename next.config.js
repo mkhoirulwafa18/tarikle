@@ -6,6 +6,10 @@ const nextConfig = {
               protocol: 'https',
               hostname: 'cdn.7tv.app',
             },
+            {
+              protocol: 'https',
+              hostname: 'img.youtube.com',
+            },
           ],
     },
     async headers() {
