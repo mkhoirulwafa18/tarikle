@@ -5,10 +5,6 @@ import './globals.css'
 import { Analytics } from '@/components/ui/analytics'
 
 const inter = Inter({ subsets: ['latin'], variable: "--font-inter" })
-const calSans = LocalFont({
-  src: "../public/fonts/CalSans-SemiBold.ttf",
-  variable: "--font-calsans",
-});
 
 export const metadata: Metadata = {
   title: 'Tarikle',
@@ -21,7 +17,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={[inter.variable, calSans.variable].join(" ")}>
+    <html lang="en" className={[inter.variable].join(" ")}>
       <head>
         <Analytics />
       </head>
