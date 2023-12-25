@@ -68,6 +68,16 @@ export function getDiffDate(date: Date, date2: Date) {
   return Math.abs(S);
 }
 
+export function getScoreRound(date: Date, date2: Date) {
+  const actual = date.getFullYear() * 12 + date.getMonth()
+  const guessed = date2.getFullYear() * 12 + date2.getMonth()
+  const diff = Math.abs(actual - guessed);
+  let score = 0;
+  diff <= 25 && (score = (25 - diff) / 25 * 1e3);
+
+  return score;
+}
+
 export const getPlay = async () => {
   const res = await fetch('/api/play');
   return res.json();
