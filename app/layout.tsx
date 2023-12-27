@@ -1,10 +1,9 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import LocalFont from "next/font/local";
+import { Poppins } from 'next/font/google'
 import './globals.css'
 import { Analytics } from '@/components/ui/analytics'
 
-const inter = Inter({ subsets: ['latin'], variable: "--font-inter" })
+const inter = Poppins({ weight: ['200', '500', '800'], subsets: ['latin'], variable: "--font-inter" })
 
 export const metadata: Metadata = {
   title: 'Tarikle',
