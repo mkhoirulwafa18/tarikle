@@ -8,7 +8,7 @@ export async function GET(
         const result = JSON.parse(file)
         return NextResponse.json(result);
     } catch (error) {
-        console.log('[COLORS_GET]', error)
+        console.log('[PLAY_GET]', error)
         return new NextResponse("Internal error", { status: 500 });
     }
 }
