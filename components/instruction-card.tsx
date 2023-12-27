@@ -13,8 +13,6 @@ import { Switch } from "./ui/switch"
 import { useRouter } from "next/navigation"
 
 export function InstructionCard() {
-  const [hardmode, setHardmode] = React.useState(false);
-  const router = useRouter();
   return (
     <Card className="w-[350px] my-1 md:w-[450px] lg:w-[500px]">
       <CardHeader className="grid place-content-center">
@@ -37,21 +35,21 @@ export function InstructionCard() {
           size="lg"
           variant="outline"
           onClick={() => {
-            router.push('/play')
+            // router.push('/play')
           }}
         >
           PLAY
         </Button>
-        <div className="flex flex-col text-center animate-fade-in">
+        {/* <div className="flex flex-col text-center animate-fade-in">
           <h2 className="text-sm text-zinc-500 ">
             Hard Mode
           </h2>
 
           <Switch id="hard-mode" checked={hardmode} onCheckedChange={() => setHardmode(!hardmode)} />
-        </div>
+        </div> */}
         <Button
           size="lg"
-          onClick={() => console.log('Daily clicked and hard mode is set to ' + hardmode)}
+          onClick={() => console.log('Daily clicked and hard mode is set to ')}
         >
           DAILY
         </Button>
