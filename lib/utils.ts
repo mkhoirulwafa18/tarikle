@@ -45,6 +45,7 @@ export function formatDateToMonthYear(val: Date) {
   })
 }
 
+//TODO(mkhoirulwafa18): change these to have another channel yt
 export function convertGuessedNumberToDate(val: number) {
   const tarikFirstYtDate = new Date(2014, 9)
   return new Date(tarikFirstYtDate.getFullYear() + Math.floor(val / 12), tarikFirstYtDate.getMonth() + val % 12)
@@ -80,6 +81,23 @@ export function getScoreRound(date: Date, date2: Date) {
 
 export const getPlay = async () => {
   const res = await fetch('/api/play');
+  return res.json();
+}
+
+export const getPlayDaily = async () => {
+  const res = await fetch('/api/play/daily');
+  return res.json();
+}
+
+export const getLeaderBoard = async () => {
+  const res = await fetch('/api/leaderboard');
+  return res.json();
+}
+
+export const getYT = async () => {
+  const API_KEY = process.env.YT_API_KEY;
+  const youtubePlaylistId = process.env.YT_PLAYLIST_ID;
+  const res = await fetch(`https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=${youtubePlaylistId}&key=${API_KEY}`);
   return res.json();
 }
 
