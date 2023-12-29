@@ -1,16 +1,23 @@
 import { NextResponse } from "next/server";
 import { promises as fs } from 'fs';
 
+// Nextjs route segment config
+export const dynamic = 'force-dynamic' // Force dynamic (server) route instead of static page
+
 export async function GET(
+    req: Request
 ) {
     try {
-        const getAll = await getAllVideos()
-        const allVids = [...getAll];
+        if (req.headers.get('authorization') !== `Bearer ${process.env.CRON_SECRET}`) {
+            return NextResponse.json({ status: 401, message: "You are not authorized" });
+        } else {
+            const getAll = await getAllVideos()
+            const allVids = [...getAll];
 
-        await fs.writeFile(process.cwd() + '/app/data/vids.json', JSON.stringify(allVids));
+            await fs.writeFile(process.cwd() + '/app/data/vids.json', JSON.stringify(allVids));
 
-
-        return NextResponse.json(allVids);
+            return NextResponse.json(allVids);
+        }
     } catch (error) {
         console.log('[SCRAPE_GET]', error)
         return new NextResponse("Internal error", { status: 500 });
