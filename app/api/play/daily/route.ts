@@ -8,9 +8,9 @@ export async function GET(
         let dataResult = {}
         const file = await fs.readFile(process.cwd() + '/app/data/daily.json', 'utf8');
         const fileData = await JSON.parse(file)
-        const now = Date();
+        const now = Date.now();
         const date = new Date(now).toLocaleString(
-            "default", {
+            "id-ID", {
             day: "numeric",
             month: "long",
             year: "numeric"

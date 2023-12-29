@@ -53,7 +53,7 @@ export function convertGuessedNumberToDate(val: number) {
 
 export function validateGuessedDate(date: string, guessedDate: string) {
   const correctDate = new Date(date).toLocaleString(
-    "default", {
+    "id-ID", {
     month: "long",
     year: "numeric"
   })
@@ -103,7 +103,4 @@ export const getYT = async () => {
 
 export const embedBase = (videoId: string) => {
   return `https://www.youtube.com/embed/${videoId}`;
-}
-export const thumbnailBase = (videoId: string) => {
-  return `https://img.youtube.com/vi/${videoId}/sddefault.jpg`;
 }
