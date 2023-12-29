@@ -8,21 +8,24 @@ import Image from "next/image";
 import React from "react";
 import { Switch } from "@/components/ui/switch";
 import { addStorage, getStorage } from "@/lib/storage-service";
-import { cn } from "@/lib/utils";
+import { cn, getPlayDaily } from "@/lib/utils";
+import Footer from "@/components/footer";
+import { toast } from "sonner";
 
 export default function Home() {
 
   const [hardmode, setHardmode] = React.useState(false);
+  const [dailySeed, setDailySeed] = React.useState('');
   const router = useRouter();
-  const lastPlayedDaily = getStorage('lastPlayedDaily') === new Date(Date()).toLocaleString(
-    "default", {
-    day: "numeric",
-    month: "long",
-    year: "numeric"
-  })
+  const lastPlayedDaily = getStorage('lastPlayedDaily') === dailySeed;
+  const getSeed = async () => {
+    const videos = await getPlayDaily()
+    setDailySeed(videos.seed);
+  }
 
   React.useEffect(() => {
     const isHard = getStorage('hard-mode');
+    getSeed()
     setHardmode(isHard == '1' ? true : false)
   }, [])
 
@@ -52,6 +55,7 @@ export default function Home() {
           className="text-white hover:text-red-500 font-sans max-sm:text-lg text-2xl"
           onClick={() => {
             addStorage('isDaily', '0')
+            addStorage('hasToken', '1')
             router.push('/play')
           }}
         >
@@ -76,14 +80,15 @@ export default function Home() {
         <Button
           size="lg"
           variant="link"
-          disabled={lastPlayedDaily}
-          className={cn("text-red-500 hover:text-white font-sans max-sm:text-lg text-2xl", lastPlayedDaily && 'text-emerald-500 line-through')}
+          // disabled={lastPlayedDaily}
+          className={cn("font-sans max-sm:text-lg text-2xl", lastPlayedDaily ? 'text-emerald-500 line-through' : "text-red-500 hover:text-white")}
           onClick={() => {
 
             if (lastPlayedDaily) {
-              return
+              toast("You have been played daily.")
             } else {
               addStorage('isDaily', '1')
+              addStorage('hasToken', '1')
               router.push('/play')
             }
           }}
@@ -91,6 +96,7 @@ export default function Home() {
           DAILY
         </Button>
       </div>
+      <Footer />
     </div>
   );
 
