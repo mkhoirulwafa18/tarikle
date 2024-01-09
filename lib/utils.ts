@@ -80,12 +80,12 @@ export function getScoreRound(date: Date, date2: Date) {
 }
 
 export const getPlay = async () => {
-  const res = await fetch('/api/play');
+  const res = await fetch('/api/play', {cache: 'no-store'});
   return res.json();
 }
 
 export const getPlayDaily = async () => {
-  const res = await fetch('/api/play/daily');
+  const res = await fetch('/api/play/daily', {cache: 'no-store'});
   return res.json();
 }
 
