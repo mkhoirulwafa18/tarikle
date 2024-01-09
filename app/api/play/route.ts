@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { promises as fs } from 'fs';
 
-export const dynamic = 'force-dynamic'
+export const revalidate = 2
 export async function GET(
 ) {
     try {
