@@ -75,8 +75,8 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
-      - name: Static HTML export with Next.js
-        run: ${{ steps.detect-package-manager.outputs.runner }} next export
+      # - name: Static HTML export with Next.js
+      #   run: ${{ steps.detect-package-manager.outputs.runner }} next export
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
@@ -91,5 +91,10 @@ jobs:
     needs: build
     steps:
       - name: Deploy to GitHub Pages
+        env:
+          NODE_ENV: ${{ secrets.NODE_ENV }}
+          NEXT_PUBLIC_BEAM_TOKEN: ${{ secrets.NEXT_PUBLIC_BEAM_TOKEN }}
+          YT_API_KEY: ${{ secrets.YT_API_KEY }}
+          YT_PLAYLIST_ID: ${{ secrets.YT_PLAYLIST_ID }}
         id: deployment
         uses: actions/deploy-pages@v4
