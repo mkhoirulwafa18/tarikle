@@ -1,9 +1,6 @@
 import { NextResponse } from "next/server";
 import { promises as fs } from 'fs';
 
-// Nextjs route segment config
-export const dynamic = 'force-dynamic' // Force dynamic (server) route instead of static page
-
 export async function GET(
     req: Request
 ) {
