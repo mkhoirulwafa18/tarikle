@@ -1,6 +1,10 @@
 /** @type {import('next').NextConfig} */
+
+const isDev = process.env.NODE_ENV = 'development'
+
 const nextConfig = {
     output: "export",
+    basePath: isDev ? '' : '/tarikle',
     images: {
         unoptimized: true,
         remotePatterns: [
